@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎲 Sistem Analisis & Prediksi Lempar Dadu</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <h1>🎲 Sistem Analisis Lempar Dadu</h1>
+            <p class="subtitle">Berbasis Pola Numerik & Transisi State</p>
+        </header>
+
+        <!-- Input Form -->
+        <section class="card">
+            <h2>📝 Input Game</h2>
+            <form id="inputForm">
+                <div class="form-group">
+                    <label for="roll1">Roll 1 (Total 1-6 kotak):</label>
+                    <input type="number" id="roll1" min="6" max="54" placeholder="Contoh: 25" required>
+                </div>
+                <div class="form-group">
+                    <label for="roll2">Roll 2 (Total 1-6 kotak):</label>
+                    <input type="number" id="roll2" min="6" max="54" placeholder="Contoh: 38" required>
+                </div>
+                <button type="submit" class="btn-primary">➕ Tambah Game</button>
+            </form>
+        </section>
+
+        <!-- Summary Stats -->
+        <section class="card">
+            <h2>📊 Ringkasan Data</h2>
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <span class="label">Total Games:</span>
+                    <span class="value" id="totalGames">0</span>
+                </div>
+                <div class="stat-box">
+                    <span class="label">Rata-rata Roll 1:</span>
+                    <span class="value" id="avgRoll1">0</span>
+                </div>
+                <div class="stat-box">
+                    <span class="label">Rata-rata Roll 2:</span>
+                    <span class="value" id="avgRoll2">0</span>
+                </div>
+                <div class="stat-box">
+                    <span class="label">Tren Dominan:</span>
+                    <span class="value" id="trendDominant">-</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Data Table -->
+        <section class="card">
+            <h2>📋 Histori Game</h2>
+            <div class="table-responsive">
+                <table id="dataTable">
+                    <thead>
+                        <tr>
+                            <th>Game #</th>
+                            <th>Roll 1</th>
+                            <th>State 1</th>
+                            <th>Roll 2</th>
+                            <th>State 2</th>
+                            <th>Selisih</th>
+                            <th>Arah</th>
+                            <th>Klassifikasi</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody">
+                        <tr class="empty-state">
+                            <td colspan="8">Data kosong. Mulai input game pertama Anda!</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <button class="btn-secondary" id="clearBtn" style="margin-top: 10px;">🗑️ Hapus Semua Data</button>
+        </section>
+
+        <!-- Numeric Trend Analysis -->
+        <section class="card">
+            <h2>📈 Analisis Tren Numerik (10-20 Game Terakhir)</h2>
+            <canvas id="trendChart" height="100"></canvas>
+            <div class="trend-summary" id="trendSummary">
+                <p class="empty-state">Data belum cukup untuk analisis tren</p>
+            </div>
+        </section>
+
+        <!-- State Transition Matrix -->
+        <section class="card">
+            <h2>🔄 Matriks Transisi State</h2>
+            <div id="transitionMatrix" class="transition-matrix">
+                <p class="empty-state">Data belum cukup untuk analisis transisi</p>
+            </div>
+        </section>
+
+        <!-- Prediction Output -->
+        <section class="card prediction-card">
+            <h2>🔮 Prediksi Kecenderungan</h2>
+            <div id="predictionOutput" class="prediction-box">
+                <p class="empty-state">Input minimal 5 game untuk prediksi akurat</p>
+            </div>
+        </section>
+
+        <!-- Analysis Basis -->
+        <section class="card">
+            <h2>📌 Dasar Analisis Prediksi</h2>
+            <div id="analysisBasis" class="analysis-basis">
+                <p class="empty-state">Dasar analisis akan ditampilkan setelah prediksi</p>
+            </div>
+        </section>
+
+        <!-- Disclaimer -->
+        <section class="card disclaimer">
+            <h2>⚠️ Disclaimer Ilmiah</h2>
+            <p>
+                Sistem ini menganalisis <strong>pola historis</strong> dan <strong>transisi state</strong> 
+                dari data lempar dadu yang telah dikumpulkan. Prediksi yang diberikan adalah <strong>analisis 
+                statistik deskriptif</strong>, bukan probabilitas matematis yang menjamin hasil.
+            </p>
+            <p>
+                <strong>Penting:</strong> Setiap roll dadu adalah kejadian independen. Pola yang terlihat 
+                dalam data historis tidak menjamin hasil roll berikutnya. Gunakan sistem ini hanya sebagai 
+                <strong>alat bantu analisis</strong>, bukan sebagai dasar keputusan finansial.
+            </p>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
